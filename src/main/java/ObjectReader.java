@@ -13,7 +13,7 @@ public class ObjectReader {
         this.path = path;
     }
 
-    public String ReadByLine(int line)
+    public String readByLine(int line)
     {
         try (Stream<String> lines = Files.lines(Paths.get(path))) {
              return lines.skip(line).findFirst().get();
@@ -21,6 +21,16 @@ public class ObjectReader {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public ArrayList<String> readByLines(ArrayList<Integer> lines)
+    {
+        ArrayList<String> readLines = new ArrayList<>();
+        for(int line : lines)
+        {
+            readLines.add(readByLine(line));
+        }
+        return readLines;
     }
 
 }
