@@ -17,4 +17,16 @@ public class JsonConverter {
         return map;
     }
 
+    public String recordToString(HashMap<String, Object> record)
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        String recordString = "";
+        try {
+            recordString = mapper.writeValueAsString(record);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return recordString;
+    }
+
 }
