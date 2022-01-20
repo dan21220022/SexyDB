@@ -5,24 +5,24 @@ import java.util.HashMap;
 
 public class JsonConverter {
 
-    public HashMap<String, Object> stringToRecord(String jsonString)
+    public Object stringToObject(String jsonString)
     {
         ObjectMapper mapper = new ObjectMapper();
-        HashMap<String,Object> map = new HashMap<>();
+        Object obj = null;
         try {
-            map = mapper.readValue(jsonString, HashMap.class);
+            obj = mapper.readValue(jsonString, Object.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return map;
+        return obj;
     }
 
-    public String recordToString(HashMap<String, Object> record)
+    public String objectToString(Object obj)
     {
         ObjectMapper mapper = new ObjectMapper();
         String recordString = "";
         try {
-            recordString = mapper.writeValueAsString(record);
+            recordString = mapper.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

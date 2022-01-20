@@ -13,8 +13,7 @@ public class DataRecord {
         this.path = path;
         this.line = line;
         this.objectReader = new ObjectReader(path);
-        this.fields = jsonConverter.stringToRecord(objectReader.readByLine(line));
+        this.fields = (HashMap<String, Object>) jsonConverter.stringToObject(objectReader.readByLine(line));
     }
-
 
 }
